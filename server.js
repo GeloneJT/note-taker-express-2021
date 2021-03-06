@@ -1,8 +1,9 @@
 const express = require('express');
+const fs = require('fs');
 
-//require routes
-const notesRoute = require('./routes/notesRoute');
-const apiRoute = require('./routes/apiRoutes');
+
+const noteRoutes = require('./routes/noteRoutes');
+const apiRoutes = require('./routes/apiRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -12,7 +13,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.use('/', apiRoutes);
-app.use('/', notesRoute);
+app.use('/', noteRoutes);
 
 
 app.listen(PORT, () => {
