@@ -12,14 +12,14 @@ router.get('/notes', (req, res) =>{
 
 router.post('/notes', (req, res) =>{
     store
-    .addNotes()
+    .addNotes(req)
     .then((notes) =>{
         return res.json(notes);
     })
     .catch((err) => res.status(500).json(err));
 })
 
-router.delete('/notes', (req, res) =>{
+router.delete('/notes/:id', (req, res) =>{
     store
     .deleteNotes()
     .then((notes) =>{
