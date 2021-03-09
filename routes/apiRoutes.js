@@ -11,8 +11,9 @@ router.get('/notes', (req, res) =>{
 })
 
 router.post('/notes', (req, res) =>{
+    console.log(req.body)
     store
-    .addNotes(req)
+    .write(req.body)
     .then((notes) =>{
         return res.json(notes);
     })
