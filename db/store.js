@@ -15,23 +15,25 @@ class Store {
     }
 
     write(note) {
-        note.uuid = uuidv4();
-        console.log(note);
+        // note.uuid = uuidv4();
+        // console.log("Write log:",note);
         return writeFileAsync('db/db.json', JSON.stringify(note))
     }
 
     getNotes() {
         return this.read().then((notes) => {
+            console.log("GetNotes:", notes)
             return JSON.parse(notes)
         })
     }
 
     addNotes(note) {
+        var id = uuidv4();
+        var noteBody = note.body;
+        noteBody["id"] = id
         this.read().then((notes) => {
-            JSON.parse(notes).push(note.uuid);
-            this.write(JSON.parse(notes))
-            console.log(notes);
-            //Code to add notes and send notes back
+        JSON.parse(notes).push(noteBody);
+        this.write(JSON.parse(notes));
         })
         return this.getNotes();
     }
