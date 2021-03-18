@@ -38,11 +38,14 @@ class Store {
     });
     return this.getNotes();
   }
+
+  deleteNotes() {
+      
+  }
 }
 
-//export new store
+
 module.exports = new Store();
 
-//create a function to addNotes
 
 //create a function to removeNotes by ID
